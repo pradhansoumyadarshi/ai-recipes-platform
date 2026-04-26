@@ -3,6 +3,8 @@
 import PricingModal from "@/components/PricingModal";
 import { Button } from "@/components/ui/button";
 
+const PRO_ENABLED = false;
+
 export default function ProLockedSection({
   isPro,
   lockText,
@@ -23,14 +25,28 @@ export default function ProLockedSection({
             <div className="text-sm font-semibold text-stone-900">
               🔒 {lockText}
             </div>
-            <PricingModal>
+
+
+            {/* <PricingModal>
               <Button
                 variant="ghost"
                 className="text-orange-600 hover:text-orange-600"
               >
                 {ctaText}
               </Button>
-            </PricingModal>
+            </PricingModal> */}
+
+           {PRO_ENABLED && (
+  <PricingModal>
+    <Button
+      variant="ghost"
+      className="text-orange-600 hover:text-orange-600"
+    >
+      {ctaText}
+    </Button>
+  </PricingModal>
+)}
+
           </div>
         </div>
       )}

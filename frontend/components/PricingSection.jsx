@@ -14,6 +14,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 
+const PRO_ENABLED = false;   // 👈 flip to true when ready
+
 export default function PricingSection({ subscriptionTier = "free" }) {
   return (
     <div className="max-w-6xl mx-auto">
@@ -105,7 +107,10 @@ export default function PricingSection({ subscriptionTier = "free" }) {
             </ul>
           </CardContent>
 
-          <CardFooter>
+
+
+
+          {/* <CardFooter>
             <SignedIn>
               <CheckoutButton
                 planId="cplan_37y5uChZ9uYauQyTlDkXDh997ht"
@@ -136,7 +141,54 @@ export default function PricingSection({ subscriptionTier = "free" }) {
                 </Button>
               </SignInButton>
             </SignedOut>
-          </CardFooter>
+          </CardFooter> */}
+           
+
+
+
+           <CardFooter>
+  {!PRO_ENABLED ? (
+    <Button disabled className="w-full bg-orange-300 text-white cursor-not-allowed">
+      Coming Soon
+    </Button>
+  ) : (
+    <>
+      <SignedIn>
+        <CheckoutButton
+          planId="cplan_37y5uChZ9uYauQyTlDkXDh997ht"
+          planPeriod="month"
+          newSubscriptionRedirectUrl="/dashboard"
+          checkoutProps={{
+            appearance: {
+              elements: {
+                drawerRoot: {
+                  zIndex: 2000,
+                },
+              },
+            },
+          }}
+        >
+          <Button
+            disabled={subscriptionTier === "pro"}
+            className="w-full bg-orange-600 hover:bg-orange-700 disabled:bg-orange-400 disabled:cursor-not-allowed text-white"
+          >
+            {subscriptionTier === "pro" ? "Subscribed" : "Subscribe Now"}
+          </Button>
+        </CheckoutButton>
+      </SignedIn>
+      <SignedOut>
+        <SignInButton mode="modal">
+          <Button variant="primary" className="w-full">
+            Login to Subscribe
+          </Button>
+        </SignInButton>
+      </SignedOut>
+    </>
+  )}
+</CardFooter>
+
+
+
         </Card>
       </div>
     </div>

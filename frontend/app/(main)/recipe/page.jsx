@@ -389,8 +389,11 @@ function RecipeContent() {
                   </h3>
 
                   <ProLockedSection
-                    isPro={recipeData.isPro}
-                    lockText="Nutrition info is Pro-only"
+                    isPro={true}
+                    // isPro={recipeData.isPro}
+                    //lockText="Nutrition info is Pro-only"
+                    lockText="Chef tips are Pro-only"
+                   ctaText="Unlock Pro Tips →"
                   >
                     <div className="grid grid-cols-2 gap-3">
                       <div className="bg-orange-50 p-3 text-center border-2 border-orange-100">
@@ -513,9 +516,15 @@ function RecipeContent() {
                 </h2>
 
                 <ProLockedSection
-                  isPro={recipeData.isPro}
-                  lockText="Chef tips are Pro-only"
-                  ctaText="Unlock Pro Tips →"
+
+
+                 isPro={true}
+                 lockText="Chef tips are Pro-only"
+                 ctaText="Unlock Pro Tips →"
+
+                  // isPro={recipeData.isPro}
+                  // lockText="Chef tips are Pro-only"
+                  // ctaText="Unlock Pro Tips →"
                 >
                   <ul className="space-y-3">
                     {recipe.tips.map((tip, i) => (
@@ -550,7 +559,8 @@ function RecipeContent() {
                 </p>
 
                 <ProLockedSection
-                  isPro={recipeData.isPro}
+                     isPro={true}
+                  // isPro={recipeData.isPro}
                   lockText="Substitutions are Pro-only"
                 >
                   <div className="space-y-4">

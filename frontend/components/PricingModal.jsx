@@ -9,11 +9,14 @@ import {
 } from "@/components/ui/dialog";
 import PricingSection from "./PricingSection";
 
+const PRO_ENABLED = false  // 👈 same flag, keep in sync
+
 export default function PricingModal({ subscriptionTier = "free", children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Only allow opening if user is on free plan
-  const canOpen = subscriptionTier === "free";
+  const canOpen = PRO_ENABLED && subscriptionTier === "free";
+  //const canOpen = subscriptionTier === "free";
 
   return (
     <Dialog open={isOpen} onOpenChange={canOpen ? setIsOpen : undefined}>
